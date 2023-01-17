@@ -360,3 +360,18 @@ KJ_TEST("Test JSG_CALLABLE") {
 
 }  // namespace
 }  // namespace workerd::jsg::test
+
+// ========================================================================================
+
+struct IsolateUuidContext: public Object {
+  JSG_RESOURCE_TYPE(IsolateUuidContext) {}
+};
+JSG_DECLARE_ISOLATE_TYPE(IsolateUuidIsolate, IsolateUuidContext);
+
+KJ_TEST("jsg::Lock logWarning") {
+  IsolateUuidIsolate isolate(v8System);
+  IsolateUuidIsolate::Lock lock(isolate);
+  // Returns the same value
+  KJ_ASSERT(lock.getUuid() == lock.getUuid());
+  KJ_ASSERT(lock.getUuid().size() == 36);
+}
