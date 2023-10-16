@@ -710,7 +710,7 @@ void SqliteDatabase::setupSecurity() {
   // https://www.sqlite.org/limits.html#max_compound_select
   sqlite3_limit(db, SQLITE_LIMIT_COMPOUND_SELECT, 5);
   sqlite3_limit(db, SQLITE_LIMIT_VDBE_OP, 25000);
-  sqlite3_limit(db, SQLITE_LIMIT_FUNCTION_ARG, 32);
+  sqlite3_limit(db, SQLITE_LIMIT_FUNCTION_ARG, 100);
   sqlite3_limit(db, SQLITE_LIMIT_ATTACHED, 0);
   sqlite3_limit(db, SQLITE_LIMIT_LIKE_PATTERN_LENGTH, 50);
   sqlite3_limit(db, SQLITE_LIMIT_VARIABLE_NUMBER, 100);
